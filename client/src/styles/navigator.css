@@ -50,3 +50,17 @@
     box-shadow:
         0 12px 25px rgba(59,130,246,.25);
 }
+
+@media(max-width:768px){
+
+  .mentor-actions .navigator-panel{
+    gap:6px;
+  }
+
+  .mentor-actions .nav-btn{
+    width:36px;
+    height:36px;
+    font-size:14px;
+  }
+
+}

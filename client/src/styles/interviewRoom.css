@@ -77,3 +77,36 @@ transition:transform 0.3s;
 transform:scale(1.05);
 box-shadow:0 0 20px #38bdf8;
 }
+
+@media(max-width:768px){
+
+  .interview-room{
+      flex-direction:column;
+      padding:15px;
+  }
+
+  .video-container{
+      width:100%;
+  }
+
+  .video-container video{
+      width:100%;
+      height:auto;
+      border-radius:12px;
+  }
+
+  .question-panel{
+      width:100%;
+      margin-top:15px;
+  }
+
+  .controls{
+      flex-wrap:wrap;
+      gap:10px;
+  }
+
+  .controls button{
+      flex:1;
+      min-width:120px;
+  }
+}

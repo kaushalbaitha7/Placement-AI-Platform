@@ -452,3 +452,42 @@
     box-shadow:
     0 10px 20px rgba(0,0,0,.15);
 }
+
+@media(max-width:768px){
+
+  .quiz-page{
+      padding:15px;
+  }
+
+  .question-box{
+      width:100%;
+      padding:20px;
+  }
+
+  .main-question{
+      font-size:20px;
+      line-height:1.5;
+  }
+
+  .option-btn{
+      min-height:55px;
+      font-size:15px;
+  }
+
+  .quiz-nav-buttons{
+      flex-direction:column;
+      gap:10px;
+  }
+
+  .back-btn,
+  .next-btn{
+      width:100%;
+  }
+
+  .timer-box{
+      top:10px;
+      right:10px;
+      font-size:16px;
+      padding:8px 12px;
+  }
+}

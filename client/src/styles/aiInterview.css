@@ -49,3 +49,34 @@
   font-size:18px;
   margin-top:10px;
 }
+
+@media (max-width:768px){
+
+  .ai-interview-container{
+      padding:15px;
+  }
+
+  .interview-card{
+      width:100%;
+      padding:20px;
+  }
+
+  .question-box{
+      font-size:18px;
+  }
+
+  .answer-box textarea{
+      width:100%;
+      min-height:120px;
+  }
+
+  .interview-controls{
+      flex-direction:column;
+      gap:10px;
+  }
+
+  .interview-controls button{
+      width:100%;
+  }
+
+}

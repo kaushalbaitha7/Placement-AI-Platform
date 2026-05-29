@@ -399,3 +399,35 @@
     background:#2563eb;
     transform:translateY(-2px);
 }
+
+@media(max-width:768px){
+
+  .mentor-sidebar{
+    display:none;
+  }
+
+  .mentor-chat-area{
+    width:100%;
+  }
+
+  .bubble{
+    max-width:95%;
+  }
+
+  .mentor-header{
+    padding:0 12px;
+  }
+
+  .mentor-title{
+    font-size:18px;
+  }
+
+  .chat-input-area{
+    padding:10px;
+  }
+
+  .chat-input-area input{
+    font-size:14px;
+  }
+
+}
