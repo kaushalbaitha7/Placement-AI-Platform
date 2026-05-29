@@ -1,0 +1,221 @@
+/* 🌿 GLOBAL LAYOUT */
+
+.dashboard-layout {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background: #f5f7fb;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 🌿 LEFT MAIN SECTION */
+
+.dashboard-main {
+    flex: 2;
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Header */
+
+.dashboard-header h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #111;
+}
+
+.dashboard-header p {
+    margin-top: 6px;
+    color: #666;
+    font-size: 15px;
+}
+
+/* Grid */
+
+.dashboard-grid {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Cards */
+
+.dashboard-card {
+    background: #f8faff;
+    border-radius: 14px;
+    padding: 22px;
+    transition: 0.25s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: #00e0ff;
+}
+
+.dashboard-card h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #111;
+}
+
+.dashboard-card p {
+    margin-top: 6px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* 🌿 RIGHT SIDE PANEL */
+
+.dashboard-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 🌿 PROFILE CARD */
+
+.profile-card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Profile Header */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.profile-header img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00e0ff;
+}
+
+.profile-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.profile-header span {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Metrics */
+
+.profile-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.metric {
+    background: #f8faff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.metric span {
+    font-size: 13px;
+    color: #555;
+}
+
+.metric strong {
+    font-size: 14px;
+    color: #111;
+}
+
+/* 🌿 STABILITY METER */
+
+.stability-meter {
+    margin-top: 10px;
+}
+
+.stability-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.meter {
+    height: 8px;
+    background: #e8edf5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00e0ff, #00b3ff);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* 🌿 AI ASSISTANT CARD */
+
+.assistant-card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.assistant-card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.assistant-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0 14px;
+}
+
+.assistant-card button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.assistant-card button:hover {
+    background: #00c8ff;
+    color: black;
+}
+
+/* 🌿 RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    overflow: hidden;
+}
+
+/* Flower Base */
+.flower {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    animation: float 10s infinite ease-in-out;
+}
+
+/* Inner Glow Core */
+.flower::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    background: inherit;
+    border-radius: 50%;
+    top: 20%;
+    left: 20%;
+    filter: blur(25px);
+    opacity: 0.6;
+}
+
+/* Individual Flower Colors */
+.flower1 {
+    background: #ff4ecd;
+    top: 10%;
+    left: 5%;
+}
+
+.flower2 {
+    background: #4e9bff;
+    top: 60%;
+    left: 15%;
+}
+
+.flower3 {
+    background: #4effa1;
+    top: 20%;
+    right: 10%;
+}
+
+.flower4 {
+    background: #ffd54e;
+    bottom: 10%;
+    right: 20%;
+}
+
+/* Organic Floating Motion */
+@keyframes float {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    25% {
+        transform: translateY(-25px) scale(1.05);
+    }
+    50% {
+        transform: translateY(-45px) scale(0.95);
+    }
+    75% {
+        transform: translateY(-20px) scale(1.02);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}

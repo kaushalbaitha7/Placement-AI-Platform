@@ -1,0 +1,352 @@
+/* ===============================
+   MAIN WRAPPER
+================================ */
+
+.mentor-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6f9;
+  overflow: hidden;
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+.mentor-header {
+  height: 60px;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   BODY LAYOUT
+================================ */
+
+.mentor-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ===============================
+   SIDEBAR
+================================ */
+
+.mentor-sidebar {
+  width: 260px;
+  background: #111827;
+  padding: 20px;
+  color: white;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.new-chat-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.new-chat-btn:hover {
+  background: #374151;
+}
+
+.session-item {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #1f2937;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.session-item:hover {
+  background: #374151;
+}
+
+.session-item.active {
+  background: #4b5563;
+}
+
+/* ===============================
+   CHAT AREA
+================================ */
+
+.mentor-chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* ===============================
+   MESSAGES CONTAINER
+================================ */
+
+.chat-messages {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #f9fafc;
+}
+
+/* ===============================
+   CHAT BUBBLES
+================================ */
+
+.bubble {
+  max-width: 70%;
+  width: fit-content;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* USER BUBBLE */
+
+.bubble.user {
+  align-self: flex-end;
+  background: #1e293b;
+  color: white;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   CHAT BUBBLES FIX
+================================ */
+
+.bubble {
+  max-width: 70%;
+  width: fit-content;
+  padding: 16px 20px;
+  border-radius: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  word-wrap: break-word;
+  text-align: left;     /* 🔥 Important */
+}
+
+/* Assistant bubble cleaner */
+.bubble.assistant {
+  align-self: flex-start;
+  background: #f9fafb;
+  color: #1e293b;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bubble.assistant h1,
+.bubble.assistant h2,
+.bubble.assistant h3 {
+  margin-top: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.bubble.assistant ol,
+.bubble.assistant ul {
+  margin: 10px 0 10px 20px;
+}
+
+.bubble.assistant li {
+  margin-bottom: 6px;
+}
+
+/* ===============================
+   CODE BLOCK PROPER ALIGN
+================================ */
+
+.code-block {
+  position: relative;
+  margin-top: 12px;
+  width: 100%;               /* 🔥 full width */
+}
+
+.code-block pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: left;          /* 🔥 force left */
+  margin: 0;                 /* remove centering */
+}
+
+/* COPY BUTTON */
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  padding: 4px 8px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background: #334155;
+}
+
+/* ===============================
+   INPUT AREA
+================================ */
+
+.chat-input-area {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 10px;
+  background: #ffffff;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.chat-input-area input:focus {
+  border-color: #111827;
+}
+
+.chat-input-area button {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.chat-input-area button:hover {
+  background: #1f2937;
+}
+
+/* ===============================
+   TYPING INDICATOR
+================================ */
+
+.typing {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.typing .dot {
+  width: 8px;
+  height: 8px;
+  background: #999;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* ===============================
+   HEADER STRUCTURE
+================================ */
+
+.mentor-header {
+  height: 60px;
+  background: #0f172a;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.mentor-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+.mentor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: #1f2937;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #374151;
+}
+.mentor-actions button {
+  background: #1f2937;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mentor-actions button:hover {
+  background: #374151;
+}

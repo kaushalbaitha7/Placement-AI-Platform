@@ -1,0 +1,51 @@
+.ai-interview-page{
+  padding:40px;
+  background:#0f172a;
+  min-height:100vh;
+  color:white;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.interview-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.panel{
+  background:#1e293b;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.panel:hover{
+  transform:translateY(-5px);
+  background:#334155;
+}
+
+.panel button{
+  margin-top:15px;
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  background:#38bdf8;
+  cursor:pointer;
+}
+
+.question-box{
+  margin-top:40px;
+  background:#020617;
+  padding:25px;
+  border-radius:12px;
+}
+
+.question{
+  font-size:18px;
+  margin-top:10px;
+}

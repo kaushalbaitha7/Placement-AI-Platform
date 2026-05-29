@@ -1,0 +1,79 @@
+.interview-room{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:40px;
+background:#0f172a;
+min-height:100vh;
+color:white;
+}
+
+.question-box{
+background:#1e293b;
+padding:25px;
+border-radius:10px;
+width:60%;
+margin-bottom:20px;
+text-align:center;
+}
+
+textarea{
+width:60%;
+height:120px;
+padding:12px;
+border-radius:8px;
+border:none;
+margin-bottom:15px;
+font-size:14px;
+}
+
+.controls{
+display:flex;
+gap:15px;
+}
+
+.voice-btn{
+background:#22c55e;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.submit-btn{
+background:#38bdf8;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.avatar-switch{
+margin-bottom:15px;
+display:flex;
+gap:10px;
+}
+
+.avatar-switch button{
+background:#1e293b;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.avatar-container{
+margin:20px;
+}
+
+.avatar{
+width:120px;
+border-radius:50%;
+transition:transform 0.3s;
+}
+
+.avatar-container.speaking .avatar{
+transform:scale(1.05);
+box-shadow:0 0 20px #38bdf8;
+}

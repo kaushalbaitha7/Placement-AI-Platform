@@ -1,0 +1,30 @@
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    background: white;
+    color: black;
+
+    border-radius: 12px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    transition: 0.2s ease;
+    z-index: 999;
+}
+
+.home-button:hover {
+    transform: scale(1.08);
+    background: #00e5ff;
+}
