@@ -24,7 +24,6 @@ function MockTests() {
         
         <div className="mocktests-container">
 
-            <HomeButton />
             <Navigator />
             <div className="mocktests-header">
                 <h2>Mock Test Library 📚</h2>

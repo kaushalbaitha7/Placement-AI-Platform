@@ -145,7 +145,7 @@ function Quiz() {
     if (!questions.length) {
         return (
             <div className="quiz-page">
-                <HomeButton />
+               
                 <Navigator />
                 <h2 className="quiz-title">{topic} 🧠</h2>
                 <p style={{ textAlign: "center" }}>
@@ -160,7 +160,7 @@ function Quiz() {
     return (
         <div className="quiz-page">
 
-            <HomeButton />
+            
             <Navigator />
 
             <h2 className="quiz-title">

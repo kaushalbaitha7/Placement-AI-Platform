@@ -8,6 +8,7 @@
   flex-direction: column;
   background: #f4f6f9;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 /* ===============================
@@ -34,6 +35,7 @@
   flex: 1;
   display: flex;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 /* ===============================
@@ -349,4 +351,51 @@
 
 .mentor-actions button:hover {
   background: #374151;
+}
+
+/* ==========================
+   MENTOR PAGE NAVIGATION ONLY
+========================== */
+
+.mentor-actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.mentor-actions .navigator-panel{
+    display:flex !important;
+    flex-direction:row !important;
+
+    align-items:center;
+    gap:10px;
+
+    position:static !important;
+}
+
+.mentor-actions .navigator-panel .nav-btn{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    border:none;
+    border-radius:10px;
+
+    background:#1e293b;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.mentor-actions .navigator-panel .nav-btn:hover{
+    background:#2563eb;
+    transform:translateY(-2px);
 }
