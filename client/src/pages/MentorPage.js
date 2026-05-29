@@ -26,7 +26,7 @@ function MentorPage() {
 
   const fetchSessions = async () => {
     const res = await fetch(
-      `http://localhost:5000/api/mentor/history/${userId}`
+      `${process.env.REACT_APP_API_URL}/api/mentor/history/${userId}`
     );
     const data = await res.json();
     setSessions(data);
@@ -67,7 +67,7 @@ function MentorPage() {
     setMessage("");
     setLoading(true);
 
-    const res = await fetch("http://localhost:5000/api/mentor/stream", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/mentor/stream`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

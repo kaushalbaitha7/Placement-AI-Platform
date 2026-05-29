@@ -24,7 +24,7 @@ function InterviewRoom() {
 
   const startInterview = async () => {
 
-    const res = await fetch("http://localhost:5000/api/interview/start", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/interview/start`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -98,7 +98,7 @@ function InterviewRoom() {
 
   const submitAnswer = async () => {
 
-    const res = await fetch("http://localhost:5000/api/interview/respond", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/interview/respond`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -25,7 +25,7 @@ function Quiz() {
     /* ✅ FETCH + TRANSFORM DATA */
     useEffect(() => {
 
-        fetch(`http://localhost:5000/api/questions/${topic}`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/questions/${topic}`)
             .then(res => res.json())
             .then(data => {
 
@@ -103,7 +103,7 @@ function Quiz() {
         const timeTaken = (questions.length * 45) - timeLeft;
 
         /* ✅ Save Result */
-        await fetch("http://localhost:5000/api/results/save", {
+        await fetch(`${process.env.REACT_APP_API_URL}/api/results/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -117,7 +117,7 @@ function Quiz() {
         });
 
         /* ✅ Call Mentor Engine */
-        const mentorRes = await fetch("http://localhost:5000/api/mentor/session", {
+        const mentorRes = await fetch(`${process.env.REACT_APP_API_URL}/api/mentor/session`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
