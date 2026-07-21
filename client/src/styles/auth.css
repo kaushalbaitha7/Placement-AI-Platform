@@ -1,0 +1,234 @@
+/* ===== PAGE ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* ===== CONTAINER ===== */
+
+.auth-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    background:
+    linear-gradient(135deg,#eef5ff,#f8fbff);
+}
+
+/* ===== CARD ===== */
+
+.auth-card{
+
+    width:100%;
+    max-width:430px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.08);
+
+}
+
+/* ===== LOGO ===== */
+
+.logo{
+
+    width:75px;
+    height:75px;
+
+    margin:auto;
+
+    display:block;
+
+    margin-bottom:20px;
+}
+
+/* ===== TITLE ===== */
+
+.auth-title{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#111827;
+}
+
+.auth-subtitle{
+
+    text-align:center;
+
+    color:#64748b;
+
+    margin-top:8px;
+
+    margin-bottom:30px;
+}
+
+/* ===== INPUT ===== */
+
+.auth-input{
+
+    width:100%;
+
+    height:52px;
+
+    margin-bottom:18px;
+
+    padding:0 16px;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.25s;
+}
+
+.auth-input:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.12);
+
+}
+
+/* ===== PASSWORD ===== */
+
+.password-wrapper{
+
+    position:relative;
+}
+
+.eye{
+
+    position:absolute;
+
+    right:18px;
+
+    top:16px;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+/* ===== LOGIN BUTTON ===== */
+
+.primary-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+
+    background:#1d4ed8;
+}
+
+/* ===== GOOGLE ===== */
+
+.google-btn{
+
+    width:100%;
+
+    height:52px;
+
+    margin-top:15px;
+
+    background:white;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+/* ===== LINKS ===== */
+
+.auth-links{
+
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:14px;
+}
+
+.auth-links span{
+
+    cursor:pointer;
+
+    color:#2563eb;
+}
+
+.auth-links span:hover{
+
+    text-decoration:underline;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:600px){
+
+.auth-card{
+
+padding:30px 25px;
+
+}
+
+.auth-title{
+
+font-size:26px;
+
+}
+
+}

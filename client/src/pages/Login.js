@@ -1,95 +1,140 @@
 import { useState } from "react";
-import "../styles/login.css";
-import "../styles/flowers.css";
+import "../styles/auth.css";
 
 function Login() {
 
-    const [email, setEmail] = useState("");
+    const [loginId, setLoginId] = useState("");
     const [password, setPassword] = useState("");
-
-    /* 🌿 Password Visibility State */
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
+
+        if (!loginId || !password) {
+            return alert("Please fill all fields");
+        }
+
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email, password })
-            });
+
+            setLoading(true);
+
+            const res = await fetch(
+                `${process.env.REACT_APP_API_URL}/api/auth/login`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        loginId,
+                        password
+                    })
+                }
+            );
 
             const data = await res.json();
 
-            if (data.token) {
-                localStorage.setItem("token", data.token);
-                window.location.href = "/dashboard";
-            } else {
-                alert(data.message);
+            setLoading(false);
+
+            if (!res.ok) {
+                return alert(data.message);
             }
 
-        } catch (error) {
-            alert("Server Error ❌");
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            window.location.href = "/dashboard";
+
         }
+        catch (err) {
+
+            setLoading(false);
+
+            alert("Unable to connect to server.");
+
+        }
+
     };
 
     return (
-        <>
-            {/* 🌸 Floating Flowers */}
-            <div className="flower flower1"></div>
-            <div className="flower flower2"></div>
-            <div className="flower flower3"></div>
-            <div className="flower flower4"></div>
 
-            {/* 🌿 Login Card */}
-            <div className="login-container">
-                <div className="login-box">
+        <div className="auth-container">
 
-                    <h2>Placement Platform 🚀</h2>
+            <div className="auth-card">
+
+                <img
+                    src="/logo.png"
+                    alt="logo"
+                    className="logo"
+                />
+
+                <h2 className="auth-title">
+                    Placement AI Platform
+                </h2>
+
+                <p className="auth-subtitle">
+                    Welcome Back
+                </p>
+
+                <input
+                    className="auth-input"
+                    placeholder="Email or Mobile Number"
+                    value={loginId}
+                    onChange={(e) => setLoginId(e.target.value)}
+                />
+
+                <div className="password-wrapper">
 
                     <input
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        className="auth-input"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    {/* 🌿 PASSWORD FIELD WITH EYE */}
-                    <div className="password-field">
-
-                        <input
-                            placeholder="Password"
-                            type={showPassword ? "text" : "password"}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-
-                        <span
-                            className="password-toggle"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
-                            {showPassword ? "🙈" : "👁"}
-                        </span>
-
-                    </div>
-
-                    <button onClick={handleLogin}>
-                        Login
-                    </button>
-
-                    <div className="login-links">
-                        <span>Forgot Password?</span>
-                        <span>New User?</span>
-                    </div>
-
-                    <button className="google-btn">
-                        Sign up with Google
-                    </button>
+                    <span
+                        className="eye"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? "🙈" : "👁"}
+                    </span>
 
                 </div>
+
+                <button
+                    className="primary-btn"
+                    onClick={handleLogin}
+                >
+                    {loading ? "Logging in..." : "Login"}
+                </button>
+
+                <div className="auth-links">
+
+                    <span>
+                        Forgot Password?
+                    </span>
+
+                    <span
+                        onClick={() =>
+                            window.location.href = "/register"
+                        }
+                    >
+                        Create Account
+                    </span>
+
+                </div>
+
+                <button className="google-btn">
+                    Continue with Google
+                </button>
+
             </div>
-        </>
+
+        </div>
+
     );
+
 }
 
 export default Login;
