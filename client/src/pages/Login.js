@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/auth.css";
 
 function Login() {
+
+    const navigate = useNavigate();
 
     const [loginId, setLoginId] = useState("");
     const [password, setPassword] = useState("");
@@ -43,10 +47,9 @@ function Login() {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            window.location.href = "/dashboard";
+            navigate("/dashboard");
 
-        }
-        catch (err) {
+        } catch (err) {
 
             setLoading(false);
 
@@ -58,76 +61,168 @@ function Login() {
 
     return (
 
-        <div className="auth-container">
+        <div className="auth-page">
 
-            <div className="auth-card">
+            {/* LEFT PANEL */}
+
+            <div className="auth-left">
 
                 <img
                     src="/logo.png"
-                    alt="logo"
-                    className="logo"
+                    alt="Placement AI"
+                    className="platform-logo"
                 />
 
-                <h2 className="auth-title">
+                <h1>
                     Placement AI Platform
-                </h2>
+                </h1>
 
-                <p className="auth-subtitle">
-                    Welcome Back
+                <p className="platform-desc">
+
+                    Prepare smarter and get placed faster with an AI-powered
+                    placement preparation platform.
+
                 </p>
 
-                <input
-                    className="auth-input"
-                    placeholder="Email or Mobile Number"
-                    value={loginId}
-                    onChange={(e) => setLoginId(e.target.value)}
+                <div className="feature-list">
+
+                    <div className="feature">
+                        ✓ AI Mock Tests
+                    </div>
+
+                    <div className="feature">
+                        ✓ Coding Practice
+                    </div>
+
+                    <div className="feature">
+                        ✓ Resume Analyzer
+                    </div>
+
+                    <div className="feature">
+                        ✓ AI Mentor
+                    </div>
+
+                    <div className="feature">
+                        ✓ Placement Analytics
+                    </div>
+
+                </div>
+
+                <img
+                    src="/login-illustration.svg"
+                    alt="Learning"
+                    className="illustration"
                 />
 
-                <div className="password-wrapper">
+            </div>
+
+            {/* RIGHT PANEL */}
+
+            <div className="auth-right">
+
+                <div className="auth-card">
+
+                    <h2>Welcome Back 👋</h2>
+
+                    <p>
+
+                        Sign in to continue your placement journey.
+
+                    </p>
 
                     <input
+
                         className="auth-input"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+
+                        placeholder="Email or Phone Number"
+
+                        value={loginId}
+
+                        onChange={(e) =>
+                            setLoginId(e.target.value)
+                        }
+
                     />
 
-                    <span
-                        className="eye"
-                        onClick={() => setShowPassword(!showPassword)}
-                    >
-                        {showPassword ? "🙈" : "👁"}
-                    </span>
+                    <div className="password-wrapper">
 
-                </div>
+                        <input
 
-                <button
-                    className="primary-btn"
-                    onClick={handleLogin}
-                >
-                    {loading ? "Logging in..." : "Login"}
-                </button>
+                            className="auth-input"
 
-                <div className="auth-links">
+                            type={
+                                showPassword
+                                    ? "text"
+                                    : "password"
+                            }
 
-                    <span>
+                            placeholder="Password"
+
+                            value={password}
+
+                            onChange={(e) =>
+                                setPassword(e.target.value)
+                            }
+
+                        />
+
+                        <span
+                                className="eye"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                         </span>
+                     </div>
+
+                    <div className="forgot">
+
                         Forgot Password?
-                    </span>
 
-                    <span
-                        onClick={() =>
-                            window.location.href = "/register"
-                        }
+                    </div>
+
+                    <button
+
+                        className="primary-btn"
+
+                        onClick={handleLogin}
+
                     >
-                        Create Account
-                    </span>
+
+                        {loading
+                            ? "Logging In..."
+                            : "Login"}
+
+                    </button>
+
+                    <div className="divider">
+
+                        <span>OR</span>
+
+                    </div>
+
+                    <button className="google-btn">
+
+                        Continue with Google
+
+                    </button>
+
+                    <div className="bottom-link">
+
+                        Don't have an account?
+
+                        <span
+                            onClick={() =>
+                                navigate("/register")
+                            }
+                        >
+
+                            Create Account
+
+                        </span>
+
+                    </div>
 
                 </div>
-
-                <button className="google-btn">
-                    Continue with Google
-                </button>
 
             </div>
 

@@ -1,0 +1,124 @@
+<svg width="700" height="520" viewBox="0 0 700 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+<linearGradient id="bg" x1="0" y1="0" x2="700" y2="520">
+<stop offset="0%" stop-color="#4F8EF7"/>
+<stop offset="100%" stop-color="#2563EB"/>
+</linearGradient>
+
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#FFFFFF"/>
+<stop offset="100%" stop-color="#EEF5FF"/>
+</linearGradient>
+
+<filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+<feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1D4ED8" flood-opacity=".18"/>
+</filter>
+
+</defs>
+
+<!-- Background Blob -->
+
+<ellipse cx="350" cy="260" rx="300" ry="210" fill="url(#bg)" opacity=".12"/>
+
+<!-- Laptop -->
+
+<rect x="150" y="150" width="360" height="220" rx="18" fill="url(#card)" filter="url(#shadow)"/>
+
+<rect x="175" y="175" width="310" height="170" rx="12" fill="#F8FAFC"/>
+
+<rect x="120" y="370" width="420" height="22" rx="11" fill="#CBD5E1"/>
+
+<!-- Dashboard -->
+
+<rect x="195" y="195" width="120" height="65" rx="12" fill="#2563EB"/>
+
+<circle cx="225" cy="225" r="12" fill="white"/>
+
+<rect x="245" y="218" width="45" height="8" rx="4" fill="white"/>
+
+<rect x="245" y="234" width="30" height="6" rx="3" fill="#DBEAFE"/>
+
+<!-- Resume -->
+
+<rect x="335" y="195" width="130" height="150" rx="12" fill="white"/>
+
+<rect x="355" y="220" width="90" height="8" rx="4" fill="#94A3B8"/>
+
+<rect x="355" y="240" width="70" height="8" rx="4" fill="#CBD5E1"/>
+
+<rect x="355" y="260" width="85" height="8" rx="4" fill="#CBD5E1"/>
+
+<rect x="355" y="280" width="55" height="8" rx="4" fill="#CBD5E1"/>
+
+<!-- Check -->
+
+<circle cx="430" cy="315" r="18" fill="#22C55E"/>
+
+<path d="M422 315L428 321L439 309" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- Analytics -->
+
+<rect x="195" y="280" width="110" height="45" rx="10" fill="#DBEAFE"/>
+
+<rect x="210" y="298" width="10" height="15" rx="2" fill="#2563EB"/>
+
+<rect x="228" y="290" width="10" height="23" rx="2" fill="#2563EB"/>
+
+<rect x="246" y="282" width="10" height="31" rx="2" fill="#2563EB"/>
+
+<rect x="264" y="292" width="10" height="21" rx="2" fill="#2563EB"/>
+
+<!-- AI Bubble -->
+
+<circle cx="560" cy="130" r="48" fill="#2563EB"/>
+
+<text x="560" y="140"
+font-size="28"
+text-anchor="middle"
+font-family="Arial"
+fill="white"
+font-weight="bold">
+AI
+</text>
+
+<!-- Floating Icons -->
+
+<circle cx="95" cy="150" r="30" fill="#DBEAFE"/>
+
+<path d="M95 138L95 163" stroke="#2563EB" stroke-width="4"/>
+
+<path d="M82 150H108" stroke="#2563EB" stroke-width="4"/>
+
+<circle cx="600" cy="380" r="28" fill="#DBEAFE"/>
+
+<path d="M590 380L598 388L612 372" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+
+<!-- Coding -->
+
+<rect x="520" y="250" width="120" height="70" rx="14" fill="white"/>
+
+<path d="M550 285L535 270L550 255" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path d="M610 285L625 270L610 255" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path d="M575 245L565 295" stroke="#2563EB" stroke-width="4"/>
+
+<!-- Student -->
+
+<circle cx="560" cy="430" r="24" fill="#2563EB"/>
+
+<rect x="528" y="455" width="64" height="32" rx="16" fill="#2563EB"/>
+
+<!-- Decorative -->
+
+<circle cx="640" cy="70" r="8" fill="#2563EB" opacity=".4"/>
+
+<circle cx="660" cy="95" r="5" fill="#60A5FA"/>
+
+<circle cx="70" cy="420" r="10" fill="#60A5FA"/>
+
+<circle cx="100" cy="445" r="5" fill="#2563EB"/>
+
+</svg>

@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/auth.css";
 
 function Register() {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -14,6 +18,8 @@ function Register() {
         confirmPassword: ""
     });
 
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -48,15 +54,11 @@ function Register() {
             !password ||
             !confirmPassword
         ) {
-
             return alert("Please fill all fields.");
-
         }
 
         if (password !== confirmPassword) {
-
             return alert("Passwords do not match.");
-
         }
 
         try {
@@ -64,19 +66,13 @@ function Register() {
             setLoading(true);
 
             const response = await fetch(
-
                 `${process.env.REACT_APP_API_URL}/api/auth/signup`,
-
                 {
-
                     method: "POST",
-
                     headers: {
                         "Content-Type": "application/json"
                     },
-
                     body: JSON.stringify({
-
                         name,
                         urn,
                         email,
@@ -84,11 +80,8 @@ function Register() {
                         branch,
                         semester,
                         password
-
                     })
-
                 }
-
             );
 
             const data = await response.json();
@@ -96,25 +89,17 @@ function Register() {
             setLoading(false);
 
             if (!response.ok) {
-
                 return alert(data.message);
-
             }
 
             localStorage.setItem("token", data.token);
-
-            localStorage.setItem(
-                "user",
-                JSON.stringify(data.user)
-            );
+            localStorage.setItem("user", JSON.stringify(data.user));
 
             alert("Registration Successful");
 
-            window.location.href = "/dashboard";
+            navigate("/dashboard");
 
-        }
-
-        catch (err) {
+        } catch (err) {
 
             setLoading(false);
 
@@ -126,106 +111,163 @@ function Register() {
 
     return (
 
-        <div className="auth-container">
+        <div className="auth-page">
 
-            <div className="auth-card">
+            {/* LEFT PANEL */}
+
+            <div className="auth-left">
 
                 <img
                     src="/logo.png"
-                    alt="logo"
-                    className="logo"
+                    alt="Placement AI"
+                    className="platform-logo"
                 />
 
-                <h2 className="auth-title">
+                <h1>Placement AI Platform</h1>
 
-                    Student Registration
-
-                </h2>
-
-                <p className="auth-subtitle">
-
-                    Placement AI Platform
-
+                <p className="platform-desc">
+                    Begin your placement journey with AI-powered learning,
+                    coding practice, mock tests, resume analysis, and career
+                    guidance.
                 </p>
 
-                <input
-                    className="auth-input"
-                    name="name"
-                    placeholder="Full Name"
-                    onChange={handleChange}
+                <div className="feature-list">
+
+                    <div className="feature">✓ AI Mock Tests</div>
+                    <div className="feature">✓ Coding Practice</div>
+                    <div className="feature">✓ Resume Analyzer</div>
+                    <div className="feature">✓ AI Mentor</div>
+                    <div className="feature">✓ Placement Analytics</div>
+
+                </div>
+
+                <img
+                    src="/login-illustration.svg"
+                    alt="Placement"
+                    className="illustration"
                 />
 
-                <input
-                    className="auth-input"
-                    name="urn"
-                    placeholder="URN / USN"
-                    onChange={handleChange}
-                />
+            </div>
 
-                <input
-                    className="auth-input"
-                    name="email"
-                    placeholder="Email Address"
-                    onChange={handleChange}
-                />
+            {/* RIGHT PANEL */}
 
-                <input
-                    className="auth-input"
-                    name="phone"
-                    placeholder="Phone Number"
-                    onChange={handleChange}
-                />
+            <div className="auth-right">
 
-                <input
-                    className="auth-input"
-                    name="branch"
-                    placeholder="Branch"
-                    onChange={handleChange}
-                />
+                <div className="auth-card register-card">
 
-                <input
-                    className="auth-input"
-                    name="semester"
-                    placeholder="Semester"
-                    onChange={handleChange}
-                />
+                    <h2>Create Account 🚀</h2>
 
-                <input
-                    className="auth-input"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
+                    <p>
+                        Join Placement AI Platform and start preparing for your dream career.
+                    </p>
 
-                <input
-                    className="auth-input"
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    onChange={handleChange}
-                />
+                    <input
+                        className="auth-input"
+                        name="name"
+                        placeholder="Full Name"
+                        onChange={handleChange}
+                    />
 
-                <button
-                    className="primary-btn"
-                    onClick={handleRegister}
-                >
+                    <input
+                        className="auth-input"
+                        name="urn"
+                        placeholder="URN / USN"
+                        onChange={handleChange}
+                    />
 
-                    {loading ? "Creating Account..." : "Register"}
+                    <input
+                        className="auth-input"
+                        name="email"
+                        type="email"
+                        placeholder="Email Address"
+                        onChange={handleChange}
+                    />
 
-                </button>
+                    <input
+                        className="auth-input"
+                        name="phone"
+                        placeholder="Phone Number"
+                        onChange={handleChange}
+                    />
 
-                <div className="auth-links">
+                    <input
+                        className="auth-input"
+                        name="branch"
+                        placeholder="Branch"
+                        onChange={handleChange}
+                    />
 
-                    <span></span>
+                    <input
+                        className="auth-input"
+                        name="semester"
+                        placeholder="Semester"
+                        onChange={handleChange}
+                    />
 
-                    <span
-                        onClick={() => window.location.href = "/"}
+                    <div className="password-wrapper">
+
+                        <input
+                            className="auth-input"
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="Password"
+                            onChange={handleChange}
+                        />
+
+                        <span
+                            className="eye"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+
+                    </div>
+
+                    <div className="password-wrapper">
+
+                        <input
+                            className="auth-input"
+                            type={showConfirmPassword ? "text" : "password"}
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            onChange={handleChange}
+                        />
+
+                       <span
+                            className="eye"
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        >
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+
+                    </div>
+
+                    <button
+                        className="primary-btn"
+                        onClick={handleRegister}
                     >
+                        {loading ? "Creating Account..." : "Create Account"}
+                    </button>
+
+                    <div className="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <button className="google-btn">
+                        Continue with Google
+                    </button>
+
+                    <div className="bottom-link">
 
                         Already have an account?
 
-                    </span>
+                        <span
+                            onClick={() => navigate("/")}
+                        >
+                            Login
+                        </span>
+
+                    </div>
 
                 </div>
 
