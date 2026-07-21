@@ -1,4 +1,4 @@
-require("dotenv").config({ override: true });
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -6,36 +6,53 @@ const cors = require("cors");
 
 const app = express();
 
-/* ROUTES */
-const authRoutes = require("./routes/authRoutes");
-const questionRoutes = require("./routes/questionRoutes");
-const resultRoutes = require("./routes/resultRoutes");
-const mentorRoutes = require("./routes/mentorRoutes");
-const uploadRoutes = require("./routes/uploadRoutes");
-const interviewRoutes = require("./routes/interviewRoutes");
+/* =========================
+   Middlewares
+========================= */
 
-/* MIDDLEWARE */
 app.use(cors());
+
 app.use(express.json());
 
-/* API ROUTES */
-app.use("/api/auth", authRoutes);
-app.use("/api/questions", questionRoutes);
-app.use("/api/results", resultRoutes);
-app.use("/api/mentor", mentorRoutes);
-app.use("/api/upload", uploadRoutes);
-app.use("/api/interview", interviewRoutes);
-app.use("/uploads", express.static("uploads"));
+app.use(express.urlencoded({ extended: true }));
 
-/* DATABASE */
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected ✅"))
-  .catch(err => console.log(err));
-
-app.get("/", (req, res) => {
-  res.send("API Running 🚀");
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
 });
 
-app.listen(5000, () =>
-  console.log("Server running on port 5000 🚀")
-);
+/* =========================
+   Routes
+========================= */
+
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/questions", require("./routes/questionRoutes"));
+app.use("/api/results", require("./routes/resultRoutes"));
+app.use("/api/mentor", require("./routes/mentorRoutes"));
+app.use("/api/upload", require("./routes/uploadRoutes"));
+app.use("/api/interview", require("./routes/interviewRoutes"));
+
+app.use("/uploads", express.static("uploads"));
+
+/* =========================
+   Database
+========================= */
+
+mongoose
+.connect(process.env.MONGO_URI)
+.then(() => {
+
+    console.log("✅ MongoDB Connected");
+
+    app.listen(5000, () => {
+
+        console.log("🚀 Server Running on Port 5000");
+
+    });
+
+})
+.catch((err) => {
+
+    console.log(err);
+
+});

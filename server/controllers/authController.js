@@ -1,135 +1,273 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");   // ✅ NEW
 
-/* 🌿 SIGNUP */
-exports.signup = async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
+/* ==========================
+   Generate JWT
+========================== */
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser)
-      return res.status(400).json({ message: "User already exists" });
+const generateToken = (id) => {
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await User.create({
-      name,
-      email,
-      password: hashedPassword
-    });
-
-    res.status(201).json({ message: "Signup successful ✅" });
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-/* 🌿 LOGIN */
-exports.login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-    if (!user)
-      return res.status(400).json({ message: "User not found" });
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ message: "Invalid credentials" });
-
-    const token = jwt.sign(
-      { id: user._id },
-      "secretkey",   // Later move to .env 😌
-      { expiresIn: "1d" }
+    return jwt.sign(
+        { id },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: "7d",
+        }
     );
 
-    res.json({ message: "Login successful ✅", token });
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
 };
 
-/* ------------------------------------------------ */
-/* 🌿 FORGOT PASSWORD */
-/* ------------------------------------------------ */
+/* ==========================
+   REGISTER
+========================== */
 
-exports.forgotPassword = async (req, res) => {
-  try {
-    const { email } = req.body;
+exports.signup = async (req, res) => {
 
-    if (!email)
-      return res.status(400).json({ message: "Email is required" });
+    try {
 
-    const user = await User.findOne({ email });
+        const {
+            name,
+            urn,
+            email,
+            phone,
+            password,
+            branch,
+            semester
+        } = req.body;
 
-    if (!user)
-      return res.status(404).json({ message: "User not found" });
+        if (
+            !name ||
+            !urn ||
+            !email ||
+            !phone ||
+            !password ||
+            !branch ||
+            !semester
+        ) {
 
-    /* ✅ Generate RAW Token */
-    const resetToken = crypto.randomBytes(32).toString("hex");
+            return res.status(400).json({
+                success: false,
+                message: "Please fill all fields."
+            });
 
-    /* ✅ HASH Token (CRITICAL SECURITY STEP) */
-    const hashedToken = crypto
-      .createHash("sha256")
-      .update(resetToken)
-      .digest("hex");
+        }
 
-    user.resetToken = hashedToken;
-    user.resetTokenExpiry = Date.now() + 10 * 60 * 1000;
+        const existingUser = await User.findOne({
 
-    await user.save();
+            $or: [
 
-    /* ✅ Send RAW token to user */
-    res.json({
-      message: "Password reset token generated ✅",
-      resetToken
-    });
+                { email: email.toLowerCase() },
 
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+                { phone },
+
+                { urn: urn.toUpperCase() }
+
+            ]
+
+        });
+
+        if (existingUser) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "User already exists with Email, Phone or URN."
+
+            });
+
+        }
+
+        const hashedPassword =
+            await bcrypt.hash(password, 10);
+
+        const user = await User.create({
+
+            name,
+
+            urn: urn.toUpperCase(),
+
+            email: email.toLowerCase(),
+
+            phone,
+
+            password: hashedPassword,
+
+            branch,
+
+            semester
+
+        });
+
+        const token =
+            generateToken(user._id);
+
+        res.status(201).json({
+
+            success: true,
+
+            message: "Registration Successful",
+
+            token,
+
+            user: {
+
+                id: user._id,
+
+                name: user.name,
+
+                email: user.email,
+
+                phone: user.phone,
+
+                urn: user.urn,
+
+                branch: user.branch,
+
+                semester: user.semester
+
+            }
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.log(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Server Error"
+
+        });
+
+    }
+
 };
 
-/* ------------------------------------------------ */
-/* 🌿 RESET PASSWORD */
-/* ------------------------------------------------ */
 
-exports.resetPassword = async (req, res) => {
-  try {
-    const { token, newPassword } = req.body;
+/* ==========================
+   LOGIN
+========================== */
 
-    if (!token || !newPassword)
-      return res.status(400).json({ message: "Invalid request" });
+exports.login = async (req, res) => {
 
-    /* ✅ HASH Incoming Token */
-    const hashedToken = crypto
-      .createHash("sha256")
-      .update(token)
-      .digest("hex");
+    try {
 
-    const user = await User.findOne({
-      resetToken: hashedToken,
-      resetTokenExpiry: { $gt: Date.now() }
-    });
+        const {
+            loginId,
+            password
+        } = req.body;
 
-    if (!user)
-      return res.status(400).json({ message: "Invalid or expired token" });
+        if (!loginId || !password) {
 
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+            return res.status(400).json({
 
-    user.password = hashedPassword;
-    user.resetToken = undefined;
-    user.resetTokenExpiry = undefined;
+                success: false,
 
-    await user.save();
+                message: "Please enter Email/Phone and Password."
 
-    res.json({ message: "Password reset successful ✅" });
+            });
 
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+        }
+
+        const user =
+            await User.findOne({
+
+                $or: [
+
+                    {
+                        email: loginId.toLowerCase()
+                    },
+
+                    {
+                        phone: loginId
+                    }
+
+                ]
+
+            });
+
+        if (!user) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message: "User not found."
+
+            });
+
+        }
+
+        const isMatch =
+            await bcrypt.compare(
+                password,
+                user.password
+            );
+
+        if (!isMatch) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message: "Invalid Password."
+
+            });
+
+        }
+
+        const token =
+            generateToken(user._id);
+
+        res.status(200).json({
+
+            success: true,
+
+            token,
+
+            user: {
+
+                id: user._id,
+
+                name: user.name,
+
+                email: user.email,
+
+                phone: user.phone,
+
+                urn: user.urn,
+
+                branch: user.branch,
+
+                semester: user.semester,
+
+                role: user.role
+
+            }
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.log(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Server Error"
+
+        });
+
+    }
+
 };

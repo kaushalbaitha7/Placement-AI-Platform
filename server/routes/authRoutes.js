@@ -1,14 +1,16 @@
 const express = require("express");
+
 const router = express.Router();
 
-/* 🌿 IMPORT ALL FUNCTIONS */
 const {
-  signup,
-  login
+    signup,
+    login
 } = require("../controllers/authController");
 
-/* 🌿 ROUTES */
+/* Authentication */
+
 router.post("/signup", signup);
+
 router.post("/login", login);
 
 module.exports = router;
