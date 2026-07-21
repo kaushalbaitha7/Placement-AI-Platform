@@ -102,7 +102,6 @@ function Register() {
         } catch (err) {
 
             setLoading(false);
-
             alert("Unable to connect to server.");
 
         }
@@ -117,35 +116,41 @@ function Register() {
 
             <div className="auth-left">
 
-                <img
-                    src="/logo.png"
-                    alt="Placement AI"
-                    className="platform-logo"
-                />
+                <div>
 
-                <h1>Placement AI Platform</h1>
+                    <h1 className="brand-title">
+                        Placement AI
+                    </h1>
 
-                <p className="platform-desc">
-                    Begin your placement journey with AI-powered learning,
-                    coding practice, mock tests, resume analysis, and career
-                    guidance.
-                </p>
+                    <p className="brand-subtitle">
 
-                <div className="feature-list">
+                        AI-powered placement preparation platform helping
+                        students master coding, aptitude, resume building,
+                        AI mentoring and career readiness.
 
-                    <div className="feature">✓ AI Mock Tests</div>
-                    <div className="feature">✓ Coding Practice</div>
-                    <div className="feature">✓ Resume Analyzer</div>
-                    <div className="feature">✓ AI Mentor</div>
-                    <div className="feature">✓ Placement Analytics</div>
+                    </p>
+
+                    <div className="feature-list">
+
+                        <div className="feature">✓ AI Mock Tests</div>
+
+                        <div className="feature">✓ Coding Practice</div>
+
+                        <div className="feature">✓ Resume Analyzer</div>
+
+                        <div className="feature">✓ AI Mentor</div>
+
+                        <div className="feature">✓ Performance Analytics</div>
+
+                    </div>
 
                 </div>
 
-                <img
-                    src="/login-illustration.svg"
-                    alt="Placement"
-                    className="illustration"
-                />
+                <div className="brand-footer">
+
+                    Kaurahub <span>|</span> Powered by EETIRP
+
+                </div>
 
             </div>
 
@@ -158,7 +163,7 @@ function Register() {
                     <h2>Create Account 🚀</h2>
 
                     <p>
-                        Join Placement AI Platform and start preparing for your dream career.
+                        Start your placement journey with Placement AI.
                     </p>
 
                     <input
@@ -177,8 +182,8 @@ function Register() {
 
                     <input
                         className="auth-input"
-                        name="email"
                         type="email"
+                        name="email"
                         placeholder="Email Address"
                         onChange={handleChange}
                     />
@@ -216,7 +221,9 @@ function Register() {
 
                         <span
                             className="eye"
-                            onClick={() => setShowPassword(!showPassword)}
+                            onClick={() =>
+                                setShowPassword(!showPassword)
+                            }
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
@@ -227,17 +234,27 @@ function Register() {
 
                         <input
                             className="auth-input"
-                            type={showConfirmPassword ? "text" : "password"}
+                            type={
+                                showConfirmPassword
+                                    ? "text"
+                                    : "password"
+                            }
                             name="confirmPassword"
                             placeholder="Confirm Password"
                             onChange={handleChange}
                         />
 
-                       <span
+                        <span
                             className="eye"
-                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            onClick={() =>
+                                setShowConfirmPassword(
+                                    !showConfirmPassword
+                                )
+                            }
                         >
-                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                            {showConfirmPassword
+                                ? <FaEyeSlash />
+                                : <FaEye />}
                         </span>
 
                     </div>
@@ -246,7 +263,9 @@ function Register() {
                         className="primary-btn"
                         onClick={handleRegister}
                     >
-                        {loading ? "Creating Account..." : "Create Account"}
+                        {loading
+                            ? "Creating Account..."
+                            : "Create Account"}
                     </button>
 
                     <div className="divider">

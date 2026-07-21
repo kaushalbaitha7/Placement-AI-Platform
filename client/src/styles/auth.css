@@ -1,5 +1,4 @@
-/* Google Font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 *{
     margin:0;
@@ -8,382 +7,960 @@
     font-family:"Poppins",sans-serif;
 }
 
+html,
 body{
-    background:#f4f7fc;
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+    background:#f8fafc;
 }
 
-/* ===========================
-   Main Layout
-=========================== */
+#root{
+    width:100%;
+    min-height:100vh;
+}
+
+/* =======================================
+        MAIN LAYOUT
+======================================= */
 
 .auth-page{
-    display:flex;
-    min-height:100vh;
+
     width:100%;
+    min-height:100vh;
+
+    display:flex;
+
+    background:#f8fafc;
+
 }
 
-/* ===========================
-   Left Section
-=========================== */
+/* =======================================
+            LEFT SIDE
+======================================= */
 
 .auth-left{
-    flex:1.2;
-    background:linear-gradient(135deg,#2563eb,#1d4ed8,#1e40af);
+
+    flex:1;
+
+    background:
+    linear-gradient(
+        145deg,
+        #1E3A8A 0%,
+        #2563EB 50%,
+        #3B82F6 100%
+    );
+
     color:white;
-    padding:60px;
+
+    padding:70px;
+
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:space-between;
+
     position:relative;
+
     overflow:hidden;
+
 }
 
+/* Decorative Circle */
+
 .auth-left::before{
+
     content:"";
+
     position:absolute;
-    width:420px;
-    height:420px;
-    border-radius:50%;
+
+    width:380px;
+    height:380px;
+
     background:rgba(255,255,255,.08);
-    top:-120px;
+
+    border-radius:50%;
+
+    top:-140px;
     right:-120px;
+
 }
 
 .auth-left::after{
+
     content:"";
+
     position:absolute;
-    width:260px;
-    height:260px;
+
+    width:240px;
+    height:240px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.05);
+
     bottom:-80px;
-    left:-80px;
+    left:-60px;
+
 }
 
-.platform-logo{
-    width:90px;
-    margin-bottom:25px;
+/* =======================================
+        BRAND
+======================================= */
+
+.brand-title{
+
+    font-size:64px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    margin-bottom:20px;
+
+    position:relative;
     z-index:2;
+
 }
 
-.auth-left h1{
-    font-size:42px;
-    font-weight:700;
-    margin-bottom:18px;
+.brand-subtitle{
+
+    font-size:18px;
+
+    line-height:32px;
+
+    max-width:560px;
+
+    opacity:.92;
+
+    margin-bottom:45px;
+
+    position:relative;
     z-index:2;
+
 }
 
-.platform-desc{
-    max-width:520px;
-    font-size:17px;
-    line-height:30px;
-    opacity:.95;
-    margin-bottom:40px;
-    z-index:2;
-}
+/* =======================================
+        FEATURES
+======================================= */
 
 .feature-list{
+
     display:flex;
+
     flex-direction:column;
+
     gap:18px;
-    margin-bottom:45px;
+
+    position:relative;
+
     z-index:2;
+
 }
 
 .feature{
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.18);
-    padding:14px 18px;
-    border-radius:14px;
-    font-size:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    font-size:17px;
+
+    font-weight:500;
+
     width:fit-content;
-    transition:.3s;
+
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    backdrop-filter:blur(15px);
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.35s;
+
 }
 
 .feature:hover{
-    transform:translateX(8px);
+
+    transform:translateX(10px);
+
     background:rgba(255,255,255,.18);
+
 }
 
-.illustration{
-    width:90%;
-    max-width:480px;
-    margin-top:auto;
+/* =======================================
+        FOOTER
+======================================= */
+
+.brand-footer{
+
+    position:relative;
+
     z-index:2;
+
+    font-size:14px;
+
+    opacity:.8;
+
+    letter-spacing:.5px;
+
 }
 
-/* ===========================
-   Right Section
-=========================== */
+.brand-footer span{
+
+    margin:0 12px;
+
+}
+/* =======================================
+            RIGHT SIDE
+======================================= */
 
 .auth-right{
-    flex:.8;
+
+    flex:1;
+
     display:flex;
-    align-items:center;
+
     justify-content:center;
-    background:#f8fafc;
+
+    align-items:center;
+
     padding:40px;
+
+    background:#f8fafc;
+
 }
 
-/* ===========================
-   Card
-=========================== */
+/* =======================================
+            AUTH CARD
+======================================= */
 
 .auth-card{
+
     width:100%;
-    max-width:430px;
+    max-width:480px;
+
     background:#fff;
+
+    border-radius:28px;
+
     padding:45px;
-    border-radius:24px;
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 20px 60px rgba(15,23,42,.08);
+
+    border:1px solid #e5e7eb;
+
+    transition:.35s;
+
 }
+
+.auth-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 30px 80px rgba(15,23,42,.12);
+
+}
+
+/* Register */
 
 .register-card{
-    max-width:470px;
+
+    max-height:88vh;
+
+    overflow-y:auto;
+
+    padding-right:18px;
+
 }
 
+/* =======================================
+            HEADINGS
+======================================= */
+
 .auth-card h2{
-    font-size:30px;
-    color:#1e293b;
-    margin-bottom:10px;
+
+    font-size:34px;
+
+    color:#111827;
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
 }
 
 .auth-card p{
-    color:#64748b;
+
+    color:#6b7280;
+
+    margin-bottom:30px;
+
+    line-height:28px;
+
     font-size:15px;
-    margin-bottom:28px;
-    line-height:24px;
+
 }
 
-/* ===========================
-   Inputs
-=========================== */
+/* =======================================
+            INPUTS
+======================================= */
 
 .auth-input{
+
     width:100%;
-    padding:15px 18px;
+
+    height:56px;
+
+    border-radius:14px;
+
+    border:1px solid #d1d5db;
+
+    padding:0 18px;
+
     margin-bottom:18px;
-    border:1px solid #dbe4ef;
-    border-radius:12px;
-    font-size:15px;
-    transition:.3s;
+
     outline:none;
+
+    font-size:15px;
+
+    transition:.25s;
+
     background:#fff;
+
+}
+
+.auth-input::placeholder{
+
+    color:#9ca3af;
+
 }
 
 .auth-input:focus{
+
     border-color:#2563eb;
-    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
 }
 
-/* ===========================
-   Password
-=========================== */
+/* =======================================
+        PASSWORD FIELD
+======================================= */
 
 .password-wrapper{
+
     position:relative;
+
+}
+
+.password-wrapper .auth-input{
+
+    margin-bottom:18px;
+
+    padding-right:55px;
+
 }
 
 .eye{
+
     position:absolute;
+
     right:18px;
+
     top:17px;
+
     cursor:pointer;
+
+    color:#6b7280;
+
     font-size:18px;
-    user-select:none;
+
+    transition:.25s;
+
 }
 
-/* ===========================
-   Forgot Password
-=========================== */
+.eye:hover{
+
+    color:#2563eb;
+
+}
+
+/* =======================================
+        FORGOT PASSWORD
+======================================= */
 
 .forgot{
+
     text-align:right;
-    margin-bottom:25px;
+
     color:#2563eb;
-    cursor:pointer;
+
     font-size:14px;
+
     font-weight:500;
+
+    cursor:pointer;
+
+    margin-top:-5px;
+
+    margin-bottom:22px;
+
 }
 
-/* ===========================
-   Buttons
-=========================== */
+.forgot:hover{
+
+    text-decoration:underline;
+
+}
+
+/* =======================================
+            PRIMARY BUTTON
+======================================= */
 
 .primary-btn{
+
     width:100%;
-    padding:15px;
+
+    height:56px;
+
     border:none;
-    border-radius:12px;
+
+    border-radius:14px;
+
     background:#2563eb;
+
     color:#fff;
+
     font-size:16px;
+
     font-weight:600;
+
     cursor:pointer;
+
     transition:.3s;
+
 }
 
 .primary-btn:hover{
+
     background:#1d4ed8;
+
     transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(37,99,235,.30);
+
 }
 
-.google-btn{
-    width:100%;
-    padding:15px;
-    margin-top:18px;
-    border:1px solid #dbe4ef;
-    background:white;
-    border-radius:12px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.google-btn:hover{
-    background:#f8fafc;
-}
-
-/* ===========================
-   Divider
-=========================== */
+/* =======================================
+            DIVIDER
+======================================= */
 
 .divider{
+
     display:flex;
+
     align-items:center;
-    margin-top:25px;
-    margin-bottom:5px;
+
+    margin:28px 0;
+
+    color:#9ca3af;
+
+    font-size:13px;
+
 }
 
 .divider::before,
+
 .divider::after{
+
     content:"";
+
     flex:1;
+
     height:1px;
-    background:#dbe4ef;
+
+    background:#e5e7eb;
+
 }
 
 .divider span{
-    margin:0 15px;
-    color:#64748b;
-    font-size:14px;
+
+    margin:0 16px;
+
 }
 
-/* ===========================
-   Bottom Link
-=========================== */
+/* =======================================
+        GOOGLE BUTTON
+======================================= */
+
+.google-btn{
+
+    width:100%;
+
+    height:56px;
+
+    border-radius:14px;
+
+    border:1px solid #d1d5db;
+
+    background:#fff;
+
+    color:#374151;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.google-btn:hover{
+
+    background:#f9fafb;
+
+    border-color:#2563eb;
+
+    color:#2563eb;
+
+}
+
+/* =======================================
+        BOTTOM LINK
+======================================= */
 
 .bottom-link{
+
     margin-top:28px;
+
     text-align:center;
-    color:#64748b;
+
+    color:#6b7280;
+
     font-size:15px;
+
 }
 
 .bottom-link span{
-    margin-left:6px;
+
+    margin-left:8px;
+
     color:#2563eb;
+
     font-weight:600;
+
     cursor:pointer;
+
+    transition:.25s;
+
 }
 
 .bottom-link span:hover{
+
+    color:#1d4ed8;
+
     text-decoration:underline;
+
 }
 
-/* ===========================
-   Scroll Register
-=========================== */
-
-.register-card{
-    max-height:92vh;
-    overflow-y:auto;
-}
+/* =======================================
+        SCROLLBAR
+======================================= */
 
 .register-card::-webkit-scrollbar{
+
     width:6px;
+
 }
 
 .register-card::-webkit-scrollbar-thumb{
+
     background:#cbd5e1;
+
     border-radius:20px;
+
 }
 
-/* ===========================
-   Responsive
-=========================== */
+.register-card::-webkit-scrollbar-thumb:hover{
 
-@media(max-width:1000px){
+    background:#94a3b8;
 
-    .auth-page{
-        flex-direction:column;
+}
+/* =======================================
+        ANIMATIONS
+======================================= */
+
+@keyframes fadeInLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-40px);
     }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+@keyframes fadeInRight{
+
+    from{
+        opacity:0;
+        transform:translateX(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.auth-left{
+    animation:fadeInLeft .8s ease;
+}
+
+.auth-right{
+    animation:fadeInRight .8s ease;
+}
+
+/* =======================================
+        TABLET
+======================================= */
+
+@media(max-width:1200px){
 
     .auth-left{
-        padding:50px 35px;
-        text-align:center;
-        align-items:center;
+
+        padding:50px;
+
     }
 
-    .platform-desc{
-        max-width:100%;
+    .brand-title{
+
+        font-size:52px;
+
     }
 
-    .feature-list{
-        align-items:center;
+    .brand-subtitle{
+
+        font-size:16px;
+        line-height:28px;
+
     }
 
     .feature{
-        width:100%;
-        max-width:340px;
-    }
 
-    .illustration{
-        width:75%;
-        margin-top:40px;
-    }
-
-    .auth-right{
-        padding:35px 20px;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .auth-left{
-        padding:35px 25px;
-    }
-
-    .platform-logo{
-        width:70px;
-    }
-
-    .auth-left h1{
-        font-size:30px;
-    }
-
-    .platform-desc{
         font-size:15px;
-        line-height:26px;
+
     }
 
     .auth-card{
-        padding:28px;
+
+        max-width:430px;
+
+        padding:38px;
+
     }
 
-    .auth-card h2{
-        font-size:25px;
+}
+
+/* =======================================
+        SMALL LAPTOP
+======================================= */
+
+@media(max-width:992px){
+
+    .auth-page{
+
+        flex-direction:column;
+
+    }
+
+    .auth-left{
+
+        min-height:45vh;
+
+        justify-content:center;
+
+        gap:35px;
+
+        text-align:center;
+
+        align-items:center;
+
+        padding:40px 25px;
+
+    }
+
+    .brand-title{
+
+        font-size:46px;
+
+    }
+
+    .brand-subtitle{
+
+        max-width:600px;
+
+        margin:auto;
+
+        margin-bottom:30px;
+
+    }
+
+    .feature-list{
+
+        align-items:center;
+
     }
 
     .feature{
-        font-size:14px;
+
+        width:min(420px,100%);
+
+        justify-content:center;
+
     }
 
-    .illustration{
+    .brand-footer{
+
+        margin-top:20px;
+
+    }
+
+    .auth-right{
+
+        padding:30px 20px 40px;
+
+    }
+
+}
+
+/* =======================================
+        MOBILE
+======================================= */
+
+@media(max-width:768px){
+
+    .auth-page{
+
+        min-height:100vh;
+
+    }
+
+    .auth-left{
+
+        min-height:auto;
+
+        padding:35px 20px;
+
+    }
+
+    .brand-title{
+
+        font-size:36px;
+
+        margin-bottom:15px;
+
+    }
+
+    .brand-subtitle{
+
+        font-size:15px;
+
+        line-height:26px;
+
+        margin-bottom:25px;
+
+    }
+
+    .feature{
+
+        font-size:14px;
+
+        padding:12px 16px;
+
+    }
+
+    .brand-footer{
+
+        font-size:13px;
+
+    }
+
+    .auth-right{
+
+        padding:20px 15px 35px;
+
+    }
+
+    .auth-card{
+
         width:100%;
+
+        max-width:100%;
+
+        padding:28px 22px;
+
+        border-radius:22px;
+
+    }
+
+    .register-card{
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding-right:22px;
+
+    }
+
+    .auth-card h2{
+
+        font-size:28px;
+
+    }
+
+    .auth-card p{
+
+        font-size:14px;
+
+        margin-bottom:22px;
+
+    }
+
+    .auth-input{
+
+        height:52px;
+
+        font-size:14px;
+
+    }
+
+    .primary-btn,
+    .google-btn{
+
+        height:52px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* =======================================
+        EXTRA SMALL DEVICES
+======================================= */
+
+@media(max-width:480px){
+
+    .auth-left{
+
+        padding:28px 18px;
+
+    }
+
+    .brand-title{
+
+        font-size:30px;
+
+    }
+
+    .brand-subtitle{
+
+        font-size:14px;
+
+        line-height:24px;
+
+    }
+
+    .feature{
+
+        font-size:13px;
+
+        padding:10px 14px;
+
+    }
+
+    .auth-right{
+
+        padding:15px;
+
+    }
+
+    .auth-card{
+
+        padding:22px 18px;
+
+        border-radius:18px;
+
+    }
+
+    .auth-card h2{
+
+        font-size:24px;
+
+    }
+
+    .forgot{
+
+        font-size:13px;
+
+    }
+
+    .bottom-link{
+
+        font-size:14px;
+
+    }
+
+    .eye{
+
+        top:16px;
+
+        font-size:17px;
+
+    }
+
+}
+
+/* =======================================
+        LARGE DESKTOP
+======================================= */
+
+@media(min-width:1600px){
+
+    .auth-card{
+
+        max-width:520px;
+
+    }
+
+    .brand-title{
+
+        font-size:72px;
+
+    }
+
+    .brand-subtitle{
+
+        font-size:20px;
+
+        max-width:650px;
+
     }
 
 }

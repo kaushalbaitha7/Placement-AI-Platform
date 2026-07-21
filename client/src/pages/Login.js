@@ -15,7 +15,7 @@ function Login() {
     const handleLogin = async () => {
 
         if (!loginId || !password) {
-            return alert("Please fill all fields");
+            return alert("Please fill all fields.");
         }
 
         try {
@@ -27,12 +27,12 @@ function Login() {
                 {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         loginId,
-                        password
-                    })
+                        password,
+                    }),
                 }
             );
 
@@ -52,7 +52,6 @@ function Login() {
         } catch (err) {
 
             setLoading(false);
-
             alert("Unable to connect to server.");
 
         }
@@ -63,116 +62,93 @@ function Login() {
 
         <div className="auth-page">
 
-            {/* LEFT PANEL */}
+            {/* LEFT */}
 
             <div className="auth-left">
 
-                <img
-                    src="/logo.png"
-                    alt="Placement AI"
-                    className="platform-logo"
-                />
+                <div>
 
-                <h1>
-                    Placement AI Platform
-                </h1>
+                    <h1 className="brand-title">
+                        Placement AI
+                    </h1>
 
-                <p className="platform-desc">
+                    <p className="brand-subtitle">
 
-                    Prepare smarter and get placed faster with an AI-powered
-                    placement preparation platform.
+                        AI-powered placement preparation platform helping
+                        students master coding, aptitude, resume building,
+                        AI mentoring and career readiness.
 
-                </p>
+                    </p>
 
-                <div className="feature-list">
+                    <div className="feature-list">
 
-                    <div className="feature">
-                        ✓ AI Mock Tests
-                    </div>
+                        <div className="feature">✓ AI Mock Tests</div>
 
-                    <div className="feature">
-                        ✓ Coding Practice
-                    </div>
+                        <div className="feature">✓ Coding Practice</div>
 
-                    <div className="feature">
-                        ✓ Resume Analyzer
-                    </div>
+                        <div className="feature">✓ Resume Analyzer</div>
 
-                    <div className="feature">
-                        ✓ AI Mentor
-                    </div>
+                        <div className="feature">✓ AI Mentor</div>
 
-                    <div className="feature">
-                        ✓ Placement Analytics
+                        <div className="feature">✓ Performance Analytics</div>
+
                     </div>
 
                 </div>
 
-                <img
-                    src="/login-illustration.svg"
-                    alt="Learning"
-                    className="illustration"
-                />
+                <div className="brand-footer">
+
+                    Kaurahub <span>|</span> Powered by EETIRP
+
+                </div>
 
             </div>
 
-            {/* RIGHT PANEL */}
+            {/* RIGHT */}
 
             <div className="auth-right">
 
                 <div className="auth-card">
 
-                    <h2>Welcome Back 👋</h2>
+                    <h2>
+                        Welcome Back 👋
+                    </h2>
 
                     <p>
-
-                        Sign in to continue your placement journey.
-
+                        Continue your placement journey.
                     </p>
 
                     <input
-
                         className="auth-input"
-
                         placeholder="Email or Phone Number"
-
                         value={loginId}
-
                         onChange={(e) =>
                             setLoginId(e.target.value)
                         }
-
                     />
 
                     <div className="password-wrapper">
 
                         <input
-
                             className="auth-input"
-
-                            type={
-                                showPassword
-                                    ? "text"
-                                    : "password"
-                            }
-
+                            type={showPassword ? "text" : "password"}
                             placeholder="Password"
-
                             value={password}
-
                             onChange={(e) =>
                                 setPassword(e.target.value)
                             }
-
                         />
 
                         <span
-                                className="eye"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <FaEyeSlash /> : <FaEye />}
-                         </span>
-                     </div>
+                            className="eye"
+                            onClick={() =>
+                                setShowPassword(!showPassword)
+                            }
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+
+                    </div>
 
                     <div className="forgot">
 
@@ -181,16 +157,11 @@ function Login() {
                     </div>
 
                     <button
-
                         className="primary-btn"
-
                         onClick={handleLogin}
-
                     >
 
-                        {loading
-                            ? "Logging In..."
-                            : "Login"}
+                        {loading ? "Logging In..." : "Login"}
 
                     </button>
 
@@ -211,13 +182,9 @@ function Login() {
                         Don't have an account?
 
                         <span
-                            onClick={() =>
-                                navigate("/register")
-                            }
+                            onClick={() => navigate("/register")}
                         >
-
                             Create Account
-
                         </span>
 
                     </div>
