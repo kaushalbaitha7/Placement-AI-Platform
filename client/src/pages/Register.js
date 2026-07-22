@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 import "../styles/auth.css";
 
 function Register() {
@@ -54,11 +55,21 @@ function Register() {
             !password ||
             !confirmPassword
         ) {
-            return alert("Please fill all fields.");
+            return Swal.fire({
+                icon: "warning",
+                title: "Incomplete Form",
+                text: "Please fill in all required fields.",
+                confirmButtonColor: "#2563eb",
+            });
         }
 
         if (password !== confirmPassword) {
-            return alert("Passwords do not match.");
+           return Swal.fire({
+                icon: "warning",
+                title: "Password Mismatch",
+                text: "Password and Confirm Password must match.",
+                confirmButtonColor: "#2563eb",
+            });
         }
 
         try {
@@ -88,21 +99,46 @@ function Register() {
 
             setLoading(false);
 
-            if (!response.ok) {
-                return alert(data.message);
+           if (!response.ok) {
+                return Swal.fire({
+                    icon: "error",
+                    title: "Registration Failed",
+                    text: data.message,
+                    confirmButtonColor: "#ef4444",
+                });
             }
 
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user", JSON.stringify(data.user));
 
-            alert("Registration Successful");
-
-            navigate("/dashboard");
+           Swal.fire({
+    icon: "success",
+    title: "Registration Successful!",
+    html: `
+        <div style="font-size:15px;color:#555;line-height:1.7">
+            Welcome to <b>Placement AI</b> 🎉<br><br>
+            Your account has been created successfully.
+            <br><br>
+            Please login to continue your placement journey.
+        </div>
+    `,
+    confirmButtonText: "Proceed to Login",
+    confirmButtonColor: "#2563eb",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    timer: 3500,
+    timerProgressBar: true,
+}).then(() => {
+    navigate("/");
+});
 
         } catch (err) {
 
             setLoading(false);
-            alert("Unable to connect to server.");
+            Swal.fire({
+                icon: "error",
+                title: "Server Error",
+                text: "Unable to connect to the server. Please try again later.",
+                confirmButtonColor: "#ef4444",
+            });
 
         }
 

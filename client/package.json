@@ -27,6 +27,7 @@
     "react-router-dom": "^7.13.1",
     "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^16.1.1",
+    "sweetalert2": "^11.26.25",
     "web-vitals": "^5.1.0"
   },
   "browserslist": {
